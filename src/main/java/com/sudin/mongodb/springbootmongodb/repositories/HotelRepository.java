@@ -3,12 +3,13 @@ package com.sudin.mongodb.springbootmongodb.repositories;
 import com.sudin.mongodb.springbootmongodb.model.Hotel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface HotelRepository extends MongoRepository<Hotel,String> {
+public interface HotelRepository extends MongoRepository<Hotel,String>,QueryDslPredicateExecutor<Hotel> {
 
     Hotel findById(String id);
 
