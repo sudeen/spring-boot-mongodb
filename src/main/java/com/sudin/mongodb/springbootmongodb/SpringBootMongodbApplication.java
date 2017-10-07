@@ -41,7 +41,7 @@ public class SpringBootMongodbApplication implements CommandLineRunner {
 
         Hotel ibis = new Hotel(
                 "Ibis",
-                150,
+                90,
                 new Address("Kathmandu","Nepal"),
                 Arrays.asList(
                         new Review("sudeen",9,false),

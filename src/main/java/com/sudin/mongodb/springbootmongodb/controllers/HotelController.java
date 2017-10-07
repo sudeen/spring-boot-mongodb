@@ -71,4 +71,22 @@ public class HotelController {
 
     }
 
+    @GetMapping("/recommended")
+    public List<Hotel> getRecommended() {
+        final int maxPrice = 100;
+
+        final int minRating = 7;
+
+        QHotel qHotel = new QHotel("hotel");
+
+        //Using the query class we can create filters
+        BooleanExpression filterByPrice = qHotel.pricePerNight.lt(maxPrice);
+        BooleanExpression filterByRating = qHotel.reviews.any().rating.gt(minRating);
+
+        //We can then pass the filters to the findAll() method
+        List<Hotel> hotels = (List<Hotel>) this.hotelRepository.findAll(filterByPrice.and(filterByRating));
+
+        return hotels;
+    }
+
 }
